@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steven Vo - Hana Beauty Medspa</title>
+    <title>Steven Vo - Medical Aesthetics Professional</title>
     <style>
         * {
             margin: 0;
@@ -13,8 +13,28 @@
 
         @keyframes gradientShift {
             0% { background-position: 0% 50%; }
+            25% { background-position: 50% 75%; }
             50% { background-position: 100% 50%; }
+            75% { background-position: 50% 25%; }
             100% { background-position: 0% 50%; }
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(-50%) translateY(0) rotate(0deg); }
+            50% { transform: translateX(-50%) translateY(-20px) rotate(180deg); }
+            100% { transform: translateX(-50%) translateY(0) rotate(360deg); }
+        }
+
+        @keyframes wave2 {
+            0% { transform: translateX(-50%) translateY(0) rotate(180deg); }
+            50% { transform: translateX(-50%) translateY(25px) rotate(0deg); }
+            100% { transform: translateX(-50%) translateY(0) rotate(180deg); }
+        }
+
+        @keyframes wave3 {
+            0% { transform: translateX(-50%) translateY(0) rotate(90deg); }
+            50% { transform: translateX(-50%) translateY(-15px) rotate(270deg); }
+            100% { transform: translateX(-50%) translateY(0) rotate(90deg); }
         }
 
         @keyframes float {
@@ -33,35 +53,74 @@
             }
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            background-size: 200% 200%;
-            animation: gradientShift 15s ease infinite;
+            background: linear-gradient(135deg, 
+                #8B6F47 0%,    /* Deep Bronze */
+                #A67C52 25%,   /* Rich Gold */
+                #6B4E3D 50%,   /* Dark Brown */
+                #9B7653 75%,   /* Copper */
+                #8B6F47 100%   /* Back to Bronze */
+            );
+            background-size: 400% 400%;
+            animation: gradientShift 20s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Animated Wave Layers */
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.15;
+        }
+
+        .wave:nth-child(1) {
+            background: radial-gradient(ellipse at center, 
+                rgba(139, 111, 71, 0.5) 0%, 
+                transparent 70%);
+            animation: wave 25s ease-in-out infinite;
+        }
+
+        .wave:nth-child(2) {
+            background: radial-gradient(ellipse at center, 
+                rgba(107, 78, 61, 0.4) 0%, 
+                transparent 70%);
+            animation: wave2 20s ease-in-out infinite;
+            animation-delay: -5s;
+        }
+
+        .wave:nth-child(3) {
+            background: radial-gradient(ellipse at center, 
+                rgba(166, 124, 82, 0.45) 0%, 
+                transparent 70%);
+            animation: wave3 30s ease-in-out infinite;
+            animation-delay: -10s;
         }
 
         .container {
             max-width: 680px;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255, 255, 255, 0.95);
             border-radius: 32px;
             padding: 48px 32px;
             box-shadow: 
                 0 30px 90px rgba(0, 0, 0, 0.25),
-                0 0 0 1px rgba(255, 255, 255, 0.5) inset,
-                0 10px 40px rgba(102, 126, 234, 0.2);
+                0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+                0 10px 40px rgba(139, 111, 71, 0.3);
             backdrop-filter: blur(20px);
             animation: fadeInUp 0.8s ease-out;
+            position: relative;
+            z-index: 10;
         }
 
         .profile {
@@ -73,7 +132,7 @@
             width: 120px;
             height: 120px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B6F47 0%, #6B4E3D 100%);
             margin: 0 auto 24px;
             display: flex;
             align-items: center;
@@ -82,15 +141,15 @@
             color: white;
             font-weight: 600;
             box-shadow: 
-                0 10px 30px rgba(102, 126, 234, 0.4),
+                0 10px 30px rgba(139, 111, 71, 0.5),
                 0 0 0 4px rgba(255, 255, 255, 0.9),
-                0 0 0 8px rgba(102, 126, 234, 0.2);
+                0 0 0 8px rgba(139, 111, 71, 0.3);
             animation: float 3s ease-in-out infinite;
         }
 
         h1 {
             font-size: 32px;
-            color: #1a1a1a;
+            color: #1a1410;
             margin-bottom: 8px;
             font-weight: 700;
             opacity: 0;
@@ -99,7 +158,7 @@
 
         .company {
             font-size: 18px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B6F47 0%, #6B4E3D 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -111,7 +170,7 @@
 
         .tagline {
             font-size: 15px;
-            color: #666;
+            color: #4a3a2e;
             line-height: 1.6;
             max-width: 500px;
             margin: 0 auto;
@@ -132,27 +191,24 @@
             justify-content: center;
             padding: 18px 24px;
             background: white;
-            border: 2px solid #e5e7eb;
+            border: 2px solid #C9B299;
             border-radius: 16px;
             text-decoration: none;
-            color: #1a1a1a;
+            color: #1a1410;
             font-weight: 600;
             font-size: 16px;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
             box-shadow: 
-                0 4px 12px rgba(0, 0, 0, 0.08),
-                0 2px 4px rgba(0, 0, 0, 0.05);
+                0 4px 12px rgba(0, 0, 0, 0.1),
+                0 2px 4px rgba(0, 0, 0, 0.06);
             opacity: 0;
             animation: fadeInUp 0.6s ease-out forwards;
         }
 
         .link-button:nth-child(1) { animation-delay: 0.5s; }
         .link-button:nth-child(2) { animation-delay: 0.6s; }
-        .link-button:nth-child(3) { animation-delay: 0.7s; }
-        .link-button:nth-child(4) { animation-delay: 0.8s; }
-        .link-button:nth-child(5) { animation-delay: 0.9s; }
 
         .link-button::before {
             content: '';
@@ -161,7 +217,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B6F47 0%, #6B4E3D 100%);
             transition: left 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 0;
         }
@@ -173,8 +229,8 @@
         .link-button:hover {
             transform: translateY(-4px) scale(1.02);
             box-shadow: 
-                0 12px 28px rgba(102, 126, 234, 0.3),
-                0 6px 12px rgba(102, 126, 234, 0.2);
+                0 12px 28px rgba(139, 111, 71, 0.4),
+                0 6px 12px rgba(139, 111, 71, 0.3);
             border-color: transparent;
             color: white;
         }
@@ -201,85 +257,117 @@
             fill: currentColor;
         }
 
-        .contact-info {
+        .locations-section {
             margin-top: 32px;
             padding-top: 32px;
-            border-top: 2px solid #e5e7eb;
+            border-top: 2px solid #C9B299;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 1s forwards;
         }
 
-        .contact-title {
+        .section-title {
             font-size: 20px;
             font-weight: 700;
-            color: #1a1a1a;
+            color: #1a1410;
             margin-bottom: 20px;
             text-align: center;
         }
 
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 16px;
-            padding: 16px;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
-            border-radius: 12px;
+        .location-card {
+            margin-bottom: 24px;
+            padding: 20px;
+            background: linear-gradient(135deg, 
+                rgba(139, 111, 71, 0.08) 0%, 
+                rgba(107, 78, 61, 0.08) 100%);
+            border-radius: 16px;
             transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            border: 2px solid rgba(139, 111, 71, 0.2);
         }
 
-        .contact-item:hover {
-            transform: translateX(4px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+        .location-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(139, 111, 71, 0.3);
+            background: linear-gradient(135deg, 
+                rgba(139, 111, 71, 0.12) 0%, 
+                rgba(107, 78, 61, 0.12) 100%);
         }
 
-        .contact-item svg {
+        .location-name {
+            font-size: 18px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #8B6F47 0%, #6B4E3D 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        .location-name svg {
             width: 20px;
             height: 20px;
-            margin-right: 12px;
-            flex-shrink: 0;
-            margin-top: 2px;
-            fill: #667eea;
+            margin-right: 8px;
+            fill: #8B6F47;
         }
 
-        .contact-text {
-            color: #4b5563;
+        .location-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .location-info:last-child {
+            margin-bottom: 0;
+        }
+
+        .location-info svg {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            fill: #8B6F47;
+        }
+
+        .location-text {
+            color: #4a3a2e;
             font-size: 15px;
             line-height: 1.6;
         }
 
-        .contact-text a {
-            color: #667eea;
+        .location-text a {
+            color: #8B6F47;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.2s ease;
             position: relative;
         }
 
-        .contact-text a::after {
+        .location-text a::after {
             content: '';
             position: absolute;
             bottom: -2px;
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #8B6F47 0%, #6B4E3D 100%);
             transition: width 0.3s ease;
         }
 
-        .contact-text a:hover::after {
+        .location-text a:hover::after {
             width: 100%;
         }
 
-        .contact-text a:hover {
-            color: #764ba2;
+        .location-text a:hover {
+            color: #6B4E3D;
         }
 
         .footer {
             margin-top: 32px;
             text-align: center;
-            color: #9ca3af;
+            color: #8B7766;
             font-size: 14px;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 1.2s forwards;
@@ -314,8 +402,12 @@
                 font-size: 14px;
             }
 
-            .contact-item {
-                padding: 12px;
+            .location-card {
+                padding: 16px;
+            }
+
+            .location-name {
+                font-size: 16px;
             }
         }
 
@@ -346,88 +438,82 @@
     </style>
 </head>
 <body>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+    
     <div class="container">
         <div class="profile">
             <div class="profile-image">SV</div>
             <h1>Steven Vo</h1>
-            <p class="company">Hana Beauty Medspa</p>
-            <p class="tagline">Providing premium aesthetic treatments with over 20 years of combined experience in medical aesthetics and beauty services.</p>
+            <p class="company">Medical Technology Consultant</p>
+            <p class="tagline">Providing premium aesthetic treatments with over 20 years of combined experience across multiple locations in Southern California.</p>
         </div>
 
         <div class="links">
-            <a href="https://hanabeautymedspa.com/" class="link-button" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                </svg>
-                <span>Visit Our Website</span>
-            </a>
-
-            <a href="tel:+17143831337" class="link-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                </svg>
-                <span>Call: (714) 383-1337</span>
-            </a>
-
             <a href="tel:+17028813000" class="link-button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                 </svg>
-                <span>Call: (714) 383-2034</span>
+                <span>Call: (702) 881-3000</span>
             </a>
 
             <a href="mailto:stevenvo1968@gmail.com" class="link-button">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                 </svg>
-                <span>Email Us</span>
-            </a>
-
-            <a href="https://www.google.com/maps/search/?api=1&query=9039+Bolsa+ave.+Ste.+204+%26+205+Westminster+CA+92683" class="link-button" target="_blank" rel="noopener noreferrer">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                <span>Get Directions</span>
+                <span>Email Me</span>
             </a>
         </div>
 
-        <div class="contact-info">
-            <h2 class="contact-title">Contact Information</h2>
+        <div class="locations-section">
+            <h2 class="section-title">Practice Locations</h2>
             
-            <div class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg>
-                <div class="contact-text">
-                    <strong>Address:</strong><br>
-                    9039 Bolsa Ave. Ste. 204 & 205<br>
-                    Westminster, CA 92683
+            <div class="location-card">
+                <div class="location-name">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+                    </svg>
+                    Hana Beauty Medspa
+                </div>
+                
+                <div class="location-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <div class="location-text">
+                        9039 Bolsa Ave. Ste. 204 & 205<br>
+                        Westminster, CA 92683<br>
+                        <a href="https://www.google.com/maps/search/?api=1&query=9039+Bolsa+ave.+Ste.+204+%26+205+Westminster+CA+92683" target="_blank" rel="noopener noreferrer">Get Directions</a> | 
+                        <a href="https://hanabeautymedspa.com/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                </svg>
-                <div class="contact-text">
-                    <strong>Phone:</strong><br>
-                    <a href="tel:+17143831337">(714) 383-1337</a>  <a href="tel:+17028813000">(714) 383-2034</a>
+            <div class="location-card">
+                <div class="location-name">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
+                    </svg>
+                    MODA Aesthetics + Wellness
                 </div>
-            </div>
-
-            <div class="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-                <div class="contact-text">
-                    <strong>Email:</strong><br>
-                    <a href="mailto:stevenvo1968@gmail.com">stevenvo1968@gmail.com</a>
+                
+                <div class="location-info">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
+                    <div class="location-text">
+                        4820 Paramount Blvd<br>
+                        Lakewood, CA 90712<br>
+                        <a href="https://www.google.com/maps/search/?api=1&query=4820+Paramount+Blvd+Lakewood+CA+90712" target="_blank" rel="noopener noreferrer">Get Directions</a> | 
+                        <a href="https://modamedspa.com/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            © 2025 Hana Beauty Medspa. All Rights Reserved.
+            © 2025 Steven Vo. All Rights Reserved.
         </div>
     </div>
 </body>
