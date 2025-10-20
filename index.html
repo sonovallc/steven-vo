@@ -63,25 +63,28 @@
                 #8B6F47 100%   /* Back to Bronze */
             );
             background-size: 400% 400%;
+            background-attachment: fixed;
             animation: gradientShift 20s ease infinite;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-start;
+            padding: 40px 20px;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         /* Animated Wave Layers */
         .wave {
-            position: absolute;
+            position: fixed;
             width: 200%;
             height: 200%;
             top: 0;
             left: 50%;
             transform: translateX(-50%);
             opacity: 0.15;
+            pointer-events: none;
         }
 
         .wave:nth-child(1) {
@@ -121,6 +124,7 @@
             animation: fadeInUp 0.8s ease-out;
             position: relative;
             z-index: 10;
+            margin: auto;
         }
 
         .profile {
